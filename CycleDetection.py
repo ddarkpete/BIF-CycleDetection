@@ -4,16 +4,17 @@ hex_ind_no = 'Dq'
 
 
 def hash_md5(text):
-    tempHash = hashlib.md5(text.encode('utf-8')).hexdigest()
-    tempHash = hashlib.md5(text.encode('utf-8')).hexdigest()
-    temp = str.encode(tempHash)
-    temp = temp[:21]
+    tempHash = hashlib.md5(text.encode('utf-8')).digest()
+    #print(tempHash)
+    tempHash = hashlib.md5(tempHash) #.encode('utf-8')).hexdigest()
+    #temp = str.encode(tempHash)
+    
     #print(tempHash)
     #print(sys.getsizeof(temp))
     #print(temp.decode())
     #product = truncate_unicode_to_byte_limit(tempHash,54)
     
-    return temp.decode()
+    return tempHash.hexdigest() [:14]
 
 def floyd(fx, x0):
     tortoise = fx(x0)
@@ -65,7 +66,9 @@ def floyd(fx, x0):
 
 
 
-floyd(hash_md5,hex_ind_no)
+#floyd(hash_md5,hex_ind_no)
+floyd(hash_md5,'renmich')
+#print(hash_md5('renmich3700873222361195459231'))
 #xd = hash_md5(hex_ind_no)
 
 #text = input('Please type text to hash:')
