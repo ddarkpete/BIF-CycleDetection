@@ -13,6 +13,7 @@ def hash_md5(text):
     #print(sys.getsizeof(temp))
     #print(temp.decode())
     #product = truncate_unicode_to_byte_limit(tempHash,54)
+    #print(sys.getsizeof(tempHash[:14]))
     
     return tempHash.hexdigest() [:14]
 
@@ -27,7 +28,8 @@ def floyd(fx, x0):
 
     while(tortoise !=  hare):
         tortoise = fx(tortoise)
-        hare = fx(fx(tortoise))
+        hare = fx(fx(hare))
+
         counter += 1
 
         if(counter % 10000000 == 0):
@@ -66,13 +68,13 @@ def floyd(fx, x0):
 
 
 
-#floyd(hash_md5,hex_ind_no)
-floyd(hash_md5,'renmich')
-#print(hash_md5('renmich3700873222361195459231'))
+floyd(hash_md5,hex_ind_no)
+#floyd(hash_md5,'renmich')
+#print(len(hex_ind_no))
 #xd = hash_md5(hex_ind_no)
 
 #text = input('Please type text to hash:')
-#print(hash_md5(hash_md5(hex_ind_no)))
+#print(hash_md5(hex_ind_no))
 #print(xd)
 #print(sys.getsizeof(hash_md5(hex_ind_no)))
 #print(sys.getsizeof(hash_md5(hex_ind_no)))
